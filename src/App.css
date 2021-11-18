@@ -16,3 +16,28 @@
   right: 18%;
   top: 17px;
 }
+
+.App {
+  display: flex;
+  justify-content: center
+}
+
+
+
+.box {
+  display: flex;
+}
+
+.inputBox {
+  margin-right: 12px;
+}
+
+.main {
+  min-width: 786px;
+}
+
+.addButton {
+  position: absolute;
+  right: 18%;
+  top: 17px;
+}
