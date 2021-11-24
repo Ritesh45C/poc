@@ -4,47 +4,72 @@ import "primereact/resources/primereact.css";
 import "primeflex/primeflex.css";
 // import '../../index.css';
 import { InputText } from "primereact/inputtext";
-import { Card } from "primereact/card";
+import { InputNumber } from "primereact/inputnumber";
+import { Calendar } from "primereact/calendar";
 
-import React, { useState, useEffect, useRef } from "react";
+import { Card } from "primereact/card";
+import { MultiSelect } from "primereact/multiselect";
+import React, { useState } from "react";
 import { Dropdown } from "primereact/dropdown";
-// import './DropdownDemo.css';
+import { RadioButton } from "primereact/radiobutton";
+import Data from "./data.json";
 
 function DropdownComponent(props) {
   const [inputList, setInputList] = useState([
-    { firstName: "", lastName: "", designation: "" },
+    {
+      firstName: "",
+      middleName: "",
+      lastName: "",
+      displayName: "",
+      displayEmployeeCode: "",
+      designation: "",
+      gender: "",
+      cities: "",
+    },
   ]);
+
   const [leaveInputs, setLeaveInputs] = useState([
     {
       NoOfDays: "",
       LeaveLeft: "",
     },
   ]);
+  const [date, setDate] = useState(null);
+
   const [formType, setFormType] = useState([{ name: "Employee", code: "EM" }]);
 
-  const [city, setCity] = useState("");
+  const [gender, setGender] = useState("");
 
   const [menu, setMenu] = useState([
     { label: "Employee", value: "Employee" },
     { label: "Leave", value: "Leave" },
   ]);
-  const cities = [
+  const formItems = [
     { name: "Employee", code: "EM" },
     { name: "Leave", code: "LV" },
   ];
-
+  const cities = [
+    { name: "New York", code: "NY" },
+    { name: "Rome", code: "RM" },
+    { name: "London", code: "LDN" },
+    { name: "Istanbul", code: "IST" },
+    { name: "Paris", code: "PRS" },
+  ];
   // const handleCityChange = (obj) => {
   //   console.log(obj);
   //   setCity(obj.value.label);
   // };
 
-  // handle input change
+  // handle Employee input change
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
+    console.log(e);
     const list = [...inputList];
     list[index][name] = value;
     setInputList(list);
   };
+
+  // handle Leave input change
   const handleLeaveInput = (e, index) => {
     const { name, value } = e.target;
     const list = [...leaveInputs];
@@ -69,9 +94,9 @@ function DropdownComponent(props) {
   const onFormChange = (e) => {
     setFormType(e.value);
   };
-
+  console.log(inputList, "this is inputlist");
   return (
-    <Card style={{ width: "800px", margin: "20px 0" }}>
+    <Card style={{ width: "1100", margin: "20px 0" }}>
       <div
         style={{
           display: "flex",
@@ -81,116 +106,60 @@ function DropdownComponent(props) {
       >
         <div className="dropdown">
           <h3>
-            <a href="https://cluemediator.com">Form Details</a>
+            <a href="https://google.com">Form Details</a>
           </h3>
           <Dropdown
             value={formType}
-            options={cities}
+            options={formItems}
             onChange={onFormChange}
             optionLabel="name"
             placeholder="Select Form"
           />
-
-          {formType.name === "Employee"
-            ? inputList.map((x, i) => {
-                return (
-                  <div className="box">
-                    <div className="inputBox">
-                      <h5>First Name </h5>
-                      <InputText
-                        name="firstName"
-                        placeholder="First Name"
-                        value={x.firstName}
-                        onChange={(e) => handleInputChange(e, i)}
-                      />
-                    </div>
-
-                    <div className="inputBox">
-                      <h5>Last Name </h5>
-
-                      <InputText
-                        className="ml10"
-                        name="lastName"
-                        placeholder="Last Name"
-                        value={x.lastName}
-                        onChange={(e) => handleInputChange(e, i)}
-                      />
-                    </div>
-
-                    <div className="inputBox">
+          {Data.map((x, i) => {
+            return (
+              <div className="box">
+                <div className="inputBox">
+                  {x.FieldType === "text" && (
+                    <div>
                       {" "}
-                      <h5>Designation</h5>
+                      <h5>{x.fieldName} </h5>
                       <InputText
-                        className="ml10"
-                        name="designation"
-                        placeholder="Designation"
-                        value={x.designation}
+                        name={x.fieldName}
+                        placeholder={x.fieldName}
+                        // value={x.f}
                         onChange={(e) => handleInputChange(e, i)}
-                      />
+                      />{" "}
                     </div>
-                    {/* 
-                  <div className="btn-box">
-                    {inputList.length !== 1 && (
-                      <button
-                        className="mr10"
-                        onClick={() => handleRemoveClick(i)}
-                      >
-                        Remove
-                      </button>
-                    )}
-                    {inputList.length - 1 === i && (
-                      <button onClick={handleAddClick}>Add</button>
-                    )}
-                  </div> */}
-                    {/* {city} */}
-                  </div>
-                );
-              })
-            : leaveInputs.map((x, i) => {
-                return (
-                  <div className="box">
-                    <div className="inputBox">
+                  )}
+                  {x.FieldType === "number" && (
+                    <div>
                       {" "}
-                      <h5>Number of Days </h5>
-                      <InputText
-                        name="NoOfDays"
-                        placeholder="Number Of Days"
-                        value={x.NoOfDays}
-                        onChange={(e) => handleLeaveInput(e, i)}
-                      />
+                      <h5>{x.fieldName} </h5>
+                      <InputNumber
+                        name={x.fieldName}
+                        placeholder={x.fieldName}
+                        // value={x.f}
+                        onChange={(e) => handleInputChange(e, i)}
+                      />{" "}
                     </div>
+                  )}
+                  {x.FieldType === "date" && (
+                    <div>
+                      {" "}
+                      <h5>{x.fieldName} </h5>
+                      <Calendar
+                        value={date}
+                        onChange={(e) => setDate(e.value)}
+                      ></Calendar>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
 
-                    <div className="inputBox">
-                      {" "}
-                      <h5>Leave Left</h5>
-                      <InputText
-                        className="ml10"
-                        name="LeaveLeft"
-                        placeholder="Leave Left"
-                        value={x.LeaveLeft}
-                        onChange={(e) => handleLeaveInput(e, i)}
-                      />
-                    </div>
-                    {/* 
-                  <div className="btn-box">
-                    {inputList.length !== 1 && (
-                      <button
-                        className="mr10"
-                        onClick={() => handleRemoveClick(i)}
-                      >
-                        Remove
-                      </button>
-                    )}
-                    {inputList.length - 1 === i && (
-                      <button onClick={handleAddClick}>Add</button>
-                    )}
-                  </div>
-                  {city} */}
-                  </div>
-                );
-              })}
-          <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
-          <div style={{ marginTop: 20 }}>{JSON.stringify(leaveInputs)}</div>
+          {/* <div style={{ marginTop: 20 }}>{JSON.stringify(inputList)}</div>
+          <div style={{ marginTop: 20 }}>{JSON.stringify(leaveInputs)}</div> */}
         </div>
       </div>
     </Card>

@@ -1,68 +1,26 @@
 [
   {
-    "region": "India",
-    "country_code": "in",
-    "url": "google.co.in",
-    "languages": [
-      {
-        "name": "English",
-        "code": "en"
-      },
-      {
-        "name": "Hindi",
-        "code": "hi"
-      }
-    ],
-    "cities": [
-      { "label": "New Delhi", "value": "New Delhi" },
-      { "label": "Mumbai", "value": "Mumbai" },
-      { "label": "Chennai", "value": "Chennai" },
-      { "label": "Kolkata", "value": "Kolkata" }
-    ],
-    "population": "1.4B billion"
+    "fieldName": "Employee Code",
+    "FieldType": "number"
   },
   {
-    "region": "United Arab Emirates",
-    "country_code": "ae",
-    "url": "google.ae",
-    "languages": [
-      {
-        "name": "Arabic",
-        "code": "ar"
-      },
-      {
-        "name": "English",
-        "code": "en"
-      }
-    ],
-    "cities": [
-      { "label": "Dubai", "value": "Dubai" },
-      { "label": "Abu Dhabi", "value": "Abu Dhabi" },
-      { "label": "Sharjah", "value": "Sharjah" },
-      { "label": "Ajman", "value": "Ajman" }
-    ],
-    "population": "8.84 million"
+    "fieldName": "First Name",
+    "FieldType": "text"
   },
   {
-    "region": "USA",
-    "country_code": "us",
-    "url": "google.com",
-    "languages": [
-      {
-        "name": "Spanish",
-        "code": "ar"
-      },
-      {
-        "name": "English",
-        "code": "en"
-      }
-    ],
-    "cities": [
-      { "label": "Chicago", "value": "Chicago" },
-      { "label": "Los Angeles", "value": "Los Angeles" },
-      { "label": "New York", "value": "New York" },
-      { "label": "San Francisco", "value": "San Francisco" }
-    ],
-    "population": "300 million"
+    "fieldName": "Middle Name",
+    "FieldType": "text"
+  },
+  {
+    "fieldName": "Last Name",
+    "FieldType": "text"
+  },
+  {
+    "fieldName": "Display Name",
+    "FieldType": "text"
+  },
+  {
+    "fieldName": "Date Of Birth",
+    "FieldType": "date"
   }
 ]
