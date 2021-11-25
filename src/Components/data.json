@@ -1,26 +1,71 @@
 [
   {
-    "fieldName": "Employee Code",
-    "FieldType": "number"
+    "field_label": "Employee Code",
+    "field_type": "number",
+    "field_placeholder": "Enter the Employee Code"
   },
   {
-    "fieldName": "First Name",
-    "FieldType": "text"
+    "field_label": "First Name",
+    "field_type": "textbox",
+    "field_placeholder": "Enter the First Name"
   },
   {
-    "fieldName": "Middle Name",
-    "FieldType": "text"
+    "field_label": "Middle Name",
+    "field_type": "textbox",
+    "field_placeholder": "Enter the Middle Name"
   },
   {
-    "fieldName": "Last Name",
-    "FieldType": "text"
+    "field_label": "Last Name",
+    "field_type": "textbox",
+    "field_placeholder": "Enter the Last Name"
   },
   {
-    "fieldName": "Display Name",
-    "FieldType": "text"
+    "field_label": "Designation",
+    "field_type": "dropdown",
+    "field_placeholder": "Select Designation",
+    "field_options": [
+      {
+        "id": 1,
+        "name": "Manager",
+        "value": "Manager"
+      },
+      {
+        "id": 2,
+        "name": "Admin",
+        "value": "Admin"
+      },
+      {
+        "id": 3,
+        "name": "Developer",
+        "value": "Developer"
+      },
+      {
+        "id": 4,
+        "name": "Executive",
+        "value": "Executive"
+      }
+    ]
   },
   {
-    "fieldName": "Date Of Birth",
-    "FieldType": "date"
+    "field_label": "Gender",
+    "field_type": "radio",
+    "field_placeholder": "Choose Gender",
+    "field_options": [
+      {
+        "id": 1,
+        "name": "Male",
+        "value": "Male"
+      },
+      {
+        "id": 2,
+        "name": "Female",
+        "value": "Female"
+      }
+    ]
+  },
+  {
+    "field_label": "Date Of Birth",
+    "field_type": "datepicker",
+    "field_placeholder": "Enter the Date Of Birth"
   }
 ]
